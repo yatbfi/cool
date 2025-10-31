@@ -41,4 +41,5 @@ func initCommands(cfg *config.Config) {
 
 	// --- Setup command (register directly under root) ---
 	cmd.NewSetupCmd().Reg(rootCmd)
+	cmd.NewUpdateCmd().Reg(rootCmd)
 }

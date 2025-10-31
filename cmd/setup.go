@@ -48,7 +48,7 @@ func (c *SetupCmd) run(cmd *cobra.Command, args []string) error {
 	cfg.UserName = name
 	cfg.UserEmail = email
 
-	if err := config.SaveLocalConfig(cfg); err != nil {
+	if err = config.SaveLocalConfig(cfg); err != nil {
 		return err
 	}
 

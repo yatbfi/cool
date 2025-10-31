@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"fmt"
+	"slices"
 
 	"github.com/spf13/cobra"
 	"github.com/yatbfi/cool/config"
@@ -33,7 +34,7 @@ func (c *baseCmd) Cmd() *cobra.Command {
 		}
 
 		// --- Skip setup validation for setup command itself ---
-		if cmd.Name() == "setup" {
+		if slices.Index([]string{"setup", "update"}, cmd.Name()) >= 0 {
 			return nil
 		}
 
