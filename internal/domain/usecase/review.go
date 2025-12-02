@@ -263,7 +263,6 @@ func formatCollaborationMessage(entry *entity.ReviewHistoryEntry) string {
 	}
 
 	msg += fmt.Sprintf("*Request ID:* `%s`\n", entry.ID)
-	msg += "\n_Please review and approve._"
 
 	return msg
 }
