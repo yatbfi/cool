@@ -34,6 +34,8 @@ func NewRootCommand() *RootCmd {
 	setupCmd.Cmd().AddCommand(
 		NewSetupEmailCmd().Cmd(),
 		NewSetupWebhookCmd().Cmd(),
+		NewSetupEditorCmd().Cmd(),
+		NewSetupProjectRootCmd().Cmd(),
 	)
 
 	reviewCmd := NewReviewCmd()
@@ -43,9 +45,16 @@ func NewRootCommand() *RootCmd {
 		NewReviewSubmitCollabCmd(reviewUc).Cmd(),
 	)
 
+	configCmd := NewConfigCmd()
+	configCmd.Cmd().AddCommand(
+		NewConfigPreviewCmd().Cmd(),
+	)
+
 	rootCmd.cmd.AddCommand(
 		setupCmd.Cmd(),
 		reviewCmd.Cmd(),
+		configCmd.Cmd(),
+		NewRunCmd().Cmd(),
 		NewUpdateCmd().Cmd(),
 		NewCompletionCmd().Cmd(),
 	)

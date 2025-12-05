@@ -14,6 +14,9 @@ type Config struct {
 
 	UserName  string `json:"user_name,omitempty"`
 	UserEmail string `json:"user_email,omitempty"`
+
+	PreferredEditor string `json:"preferred_editor,omitempty"`
+	ProjectRoot     string `json:"project_root,omitempty"`
 }
 
 var cached *Config
@@ -31,6 +34,8 @@ func GetConfig() *Config {
 		cfg.UserEmail = local.UserEmail
 		cfg.GChatReviewWebhookURL = local.GChatReviewWebhookURL
 		cfg.GChatCollabWebhookURL = local.GChatCollabWebhookURL
+		cfg.PreferredEditor = local.PreferredEditor
+		cfg.ProjectRoot = local.ProjectRoot
 	}
 
 	cached = cfg

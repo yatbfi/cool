@@ -36,11 +36,15 @@ func (c *SetupCmd) run(cmd *cobra.Command, args []string) error {
 		fmt.Printf("Email                    : %s\n", cfg.UserEmail)
 		fmt.Printf("GChat Review Webhook URL : %s\n", cfg.GChatReviewWebhookURL)
 		fmt.Printf("GChat Collab Webhook URL : %s\n", cfg.GChatCollabWebhookURL)
-		fmt.Println("\nUse 'cool setup email' or 'cool setup webhook' to update specific settings.")
+		if cfg.ProjectRoot != "" {
+			fmt.Printf("Project Root             : %s\n", cfg.ProjectRoot)
+		}
+		fmt.Println("\nUse 'cool setup email', 'cool setup webhook', 'cool setup editor', or 'cool setup project-root' to update specific settings.")
 		return nil
 	}
 
-	fmt.Println("🚀 Starting setup...\n")
+	fmt.Println("🚀 Starting setup...")
+	fmt.Println()
 
 	// Run email setup if needed
 	if needsEmailSetup {

@@ -152,3 +152,41 @@ func Fatalln(args ...interface{}) {
 func Panicln(args ...interface{}) {
 	logger.Panicln(args...)
 }
+
+// SimpleLogger implements a simple logger for hot reload usecase
+type SimpleLogger struct {
+	quiet bool
+}
+
+// NewSimple creates a new simple logger
+func NewSimple(quiet bool) *SimpleLogger {
+	return &SimpleLogger{quiet: quiet}
+}
+
+// Info logs an informational message
+func (l *SimpleLogger) Info(message string) {
+	l.log(message)
+}
+
+// Success logs a success message
+func (l *SimpleLogger) Success(message string) {
+	l.log(message)
+}
+
+// Error logs an error message
+func (l *SimpleLogger) Error(message string) {
+	l.log(message)
+}
+
+// Debug logs a debug message
+func (l *SimpleLogger) Debug(message string) {
+	l.log(message)
+}
+
+// log prints a message if not in quiet mode
+func (l *SimpleLogger) log(message string) {
+	if !l.quiet {
+		timestamp := time.Now().Format("15:04:05")
+		logger.Printf("[%s] %s", timestamp, message)
+	}
+}

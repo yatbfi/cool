@@ -28,7 +28,7 @@ func (c *UpdateCmd) run(_ *cobra.Command, _ []string) error {
 
 	goBin, err := exec.LookPath("go")
 	if err != nil {
-		return fmt.Errorf("Go binary not found in PATH: %w", err)
+		return fmt.Errorf("go binary not found in PATH: %w", err)
 	}
 
 	updateCmd := exec.Command(goBin, "install", "github.com/yatbfi/cool@latest")
